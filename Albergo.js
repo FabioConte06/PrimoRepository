@@ -13,8 +13,8 @@ const createForm = (parentElement) => {
                 `<div class="form-group">${suite}\n <input type="text" id="${suite}" class="form-control"/></div>`;
             }).join("\n") + `<button type="button" class="btn btn-primary" id="submit">SUBMIT</button>`;
             document.querySelectorAll("#submit").onclick = () => {
-                const result = data.map((name) => {
-                    return document.querySelector("#" + name).value;
+                const result = data.map((date, singole, double, suite) => {
+                    return document.querySelector("#" + date, singole, double, suite).value;
                 });
                 callback(result);
             }
