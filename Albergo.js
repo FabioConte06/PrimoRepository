@@ -20,3 +20,10 @@ const createForm = (parentElement) => {
             },
         };
     };
+
+    const form = createForm(document.getElementById("form"));
+    form.setlabels(["Data", "Singole", "Doppie", "Suite"]);
+    form.submit = ((formData) => {
+        console.log("Dati inviati", formData);
+    })
+    form.render();
