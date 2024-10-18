@@ -5,12 +5,13 @@ const createTable = (parentElement) => {
             data = dataInput;
         },
         render: () => {
-            let htmlTable = "<table>";
+            let htmlTable = `<table class="table">`;
             htmlTable += data.map((row) => 
                 "<tr>" + row.map((col) => 
                     "<td>" + col + "</td>"
                 ).join("")
             ).join("") + "</tr>";
+
             htmlTable += "</table>";
             parentElement.innerHTML = htmlTable;
         }
