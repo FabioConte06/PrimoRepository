@@ -1,27 +1,26 @@
 const createTable = (parentElement, data) => {
-    let htmlTable = "<table>";
-    htmlTable += data.map((row) => 
-        "<tr>" + row.map((col) => 
-            "<td>" + col + "</td>"
-            ).join("")
-        ).join("") + "</tr>";
-    htmlTable += "</table>";
-    parentElement.innerHTML = htmlTable;
-    let newrow;
+    console.log(data);
+    let header = "<table border='1'><thead>";
+    header += data.map(t => `<th>${t}</th>`).join("");
+    header += "</thead><tbody>";
+    parentElement.innerHTML = header;
+    let newrow = [];
     return {
         render: (listadata) => {
             newrow.push(listadata);
+            console.log(newrow);
             let Row = "";
-            listadata.forEach((dato) => {
+            newrow.forEach((dato) => {
                 let htmlRow = "<tr>" + dato.map(d => `<td>${d}</td>`).join('') + "</tr>";
                 Row += htmlRow;
             }) 
             console.log(Row)
-            table.innerHTML = header + Row + "</tbody></table>";
+            parentElement.innerHTML = header + Row + "</tbody></table>";
         }
     }
-}
-
-const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
-table.render(["a", "b", "c", "d"]);
-
+  }
+  
+  const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
+  table.render(["a", "b", "c", "d"]);
+  
+  
