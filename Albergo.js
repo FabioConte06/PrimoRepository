@@ -22,7 +22,7 @@ const createForm = (parentElement) => {
     };
 
     const form = createForm(document.getElementById("form"));
-    form.setlabels(["Data", "Singole", "Doppie", "Suite"]);
+    form.setlabels([["Data","date"], ["Singole","number"], ["Doppie","number"], ["Suite", "number"]]);
     form.submit = ((formData) => {
         console.log("Dati inviati", formData);
     })
