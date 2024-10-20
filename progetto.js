@@ -21,6 +21,6 @@ const createTable = (parentElement, data) => {
   }
   
   const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
-  table.render(["a", "b", "c", "d"]);
+  
   
   
