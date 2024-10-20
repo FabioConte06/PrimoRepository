@@ -15,7 +15,7 @@ const createForm = (parentElement) => {
                 const result = data.map((index) => {
                     return document.querySelector(`#${index[0]}`).value;
                 });
-                callback(result);
+                console.log(result);
             }
             },
         };
