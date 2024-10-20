@@ -1,6 +1,6 @@
 const createTable = (parentElement, data) => {
     console.log(data);
-    let header = "<table border='1'><thead>";
+    let header = "<table class='table' border='1'><thead>";
     header += data.map(t => `<th>${t}</th>`).join("");
     header += "</thead><tbody>";
     parentElement.innerHTML = header;
