@@ -21,20 +21,20 @@ const createTable = (parentElement, data) => {
 }
 
 const generadata = (inizio, giorni) => {
-    const data = [];
+    const data_list = [];
     const date = new Date(inizio);
 
     for (let i = 0; i < giorni; i++) {
         const formato = date.toLocaleDateString('it-IT');
-        data.push([formato, "10", "5", "3"]);
+        data_list.push([formato, "10", "5", "3"]);
         date.setDate(date.getDate() + 1);
     }
-    return data;
+    return data_list;
 }
  
 const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
-const data = generaData("2025-03-01", 30);
-table.render(data);
+const data_list = generaData("2025-03-01", 30);
+table.render(data_list);
 
 
   
