@@ -2,8 +2,6 @@ const createForm = (parentElement) => {
     let data;
     callback = null;
 
-    //da sistemare
-
     return {
         setlabels: (labels) => {data = labels},
         submit: (callbackinput) => {callback = callbackinput},
@@ -19,7 +17,7 @@ const createForm = (parentElement) => {
                     return document.getElementById(index[0]).value;
                 });
                 table.render(result)
-                callback(result);
+                console.log(result);
             }
             },
         };
