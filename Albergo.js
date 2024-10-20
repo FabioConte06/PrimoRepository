@@ -8,7 +8,7 @@ const createForm = (parentElement) => {
         render: () => {
             parentElement.innerHTML = data.map((index) => {
                 return `<div class="form-group">
-                        ${index[0]}\n <input type="${index[1]}" id="${index}" class="form-control"/>
+                        ${index[0]}\n <input type="${index[1]}" id="#${index[0]}" class="form-control"/>
                         </div>`;
             }).join("\n") + `<button type="button" class="btn btn-primary" id="submit">SUBMIT</button>`;
             document.querySelectorAll("#submit").onclick = () => {
