@@ -21,7 +21,7 @@ const createTable = (parentElement, data) => {
   }
   
 const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
-table.render(["a", "b", "c", "d"]);
+table.render(["01/03/2025", "10", "5", "3"], ["02/03/2025", "10", "5", "3"], ["03/03/2025", "10", "5", "3"], ["04/03/2025", "10", "5", "3"], ["05/03/2025", "10", "5", "3"], ["06/03/2025", "10", "5", "3"]);
 
 
   
