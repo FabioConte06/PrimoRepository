@@ -7,7 +7,10 @@ const createTable = (parentElement, data) => {
     let newrow = [];
     return {
         render: (listadata) => {
-            newrow.push(listadata);
+            for (let i = 0; i < listadata.length; i++) {
+                newrow.push(listadata[i]);
+            }
+
             console.log(newrow);
             let Row = "";
             newrow.forEach((dato) => {
@@ -21,5 +24,4 @@ const createTable = (parentElement, data) => {
 }
  
 const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
-table.build([["01/03/2025", "10", "5", "3"], ["02/03/2025", "10", "5", "3"], ["03/03/2025", "10", "5", "3"], ["04/03/2025", "10", "5", "3"], ["05/03/2025", "10", "5", "3"], ["06/03/2025", "10", "5", "3"]]);
-table.render();
+table.render(["01/03/2025", "10", "5", "3"], ["02/03/2025", "10", "5", "3"], ["03/03/2025", "10", "5", "3"], ["04/03/2025", "10", "5", "3"], ["05/03/2025", "10", "5", "3"], ["06/03/2025", "10", "5", "3"]);
