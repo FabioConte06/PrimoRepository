@@ -23,9 +23,9 @@ const createTable = (parentElement, data) => {
     }
 }
 
-const generaData = (inizio, giorni) => {
+const generaData = (giorni) => {
     const giorno = [];
-    const date = new Date(inizio);
+    const date = new Date();
 
     for (let i = 0; i < giorni; i++){
         const formato = date.toLocaleDateString("it-IT");
@@ -36,5 +36,5 @@ const generaData = (inizio, giorni) => {
 }
  
 const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
-const giorno = generaData("2025-03-01", 30);
+const giorno = generaData(30);
 table.render(giorno);
