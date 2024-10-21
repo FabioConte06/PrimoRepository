@@ -11,7 +11,7 @@ const createTable = (parentElement, data) => {
             console.log(newrow);
             let Row = "";
             newrow.forEach((dato) => {
-                let htmlRow = "<tr>" + dato.map(d => `<td>${d}</td>`).join('') + "</tr>";
+                let htmlRow = "<tr>" + dato.map(d => `<td>${d}</td>`).join('') + "</tr>" + "\n";
                 Row += htmlRow;
             }) 
             console.log(Row)
