@@ -11,7 +11,7 @@ const createForm = (parentElement) => {
                         ${index[0]}\n <input type="${index[1]}" id="${index[0]}" class="form-control"/>
                         </div>`;
             }).join("\n") + `<button type="button" class="btn btn-primary" id="submit">SUBMIT</button>`;
-            submit.onclick = () => {
+            document.getElementById("submit").onclick = () => {
                 const result = data.map((index) => {
                     return document.getElementById(index[0]).value;
                 });
@@ -25,6 +25,6 @@ const createForm = (parentElement) => {
     const form = createForm(document.getElementById("form"));
     form.setlabels([["Data","date"], ["Singole","number"], ["Doppie","number"], ["Suite", "number"]]);
     form.submit = ((formData) => {
-        console.log("Dati inviati", formData);
+        console.log("Dati inviati:", formData);
     })
     form.render();
