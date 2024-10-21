@@ -12,12 +12,11 @@ const createForm = (parentElement) => {
                         </div>`;
             }).join("\n") + `<button type="button" class="btn btn-primary" id="submit">SUBMIT</button>`;
             document.getElementById("submit").onclick = () => {
-                console.log("ciao")
                 const result = data.map((index) => {
                     return document.getElementById(index[0]).value;
                 });
-                table.render(result)
-                console.log(result);
+                table.render(result);
+                callback(result);
             }
             },
         };
@@ -26,6 +25,6 @@ const createForm = (parentElement) => {
     const form = createForm(document.getElementById("form"));
     form.setlabels([["Data","date"], ["Singole","number"], ["Doppie","number"], ["Suite", "number"]]);
     form.submit = ((formData) => {
-        console.log("Dati inviati", formData);
+        console.log("Dati inviati:", formData);
     })
     form.render();
