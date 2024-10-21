@@ -22,6 +22,19 @@ const createTable = (parentElement, data) => {
         }
     }
 }
+
+const generaData = (inizio, giorni) => {
+    const giorno = [];
+    const date = new Date(inizio);
+
+    for (let i = 0; i < giorni; i++){
+        const formato = date.toLocaleDateString("it-IT");
+        giorno.push([formato, "10", "5", "3"]);
+        date.setDate(date.getDate() + 1);
+    }
+    return giorno;
+}
  
 const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
-table.render(["01/03/2025", "10", "5", "3"], ["02/03/2025", "10", "5", "3"], ["03/03/2025", "10", "5", "3"], ["04/03/2025", "10", "5", "3"], ["05/03/2025", "10", "5", "3"], ["06/03/2025", "10", "5", "3"]);
+const giorno = generaData("2025-03-01", 30);
+table.render(giorno);
