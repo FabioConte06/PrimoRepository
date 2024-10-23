@@ -12,20 +12,46 @@ const createForm = (parentElement) => {
                         </div>`;
             }).join("\n") + `<button type="button" class="btn btn-primary" id="submit">SUBMIT</button>`;
             document.getElementById("submit").onclick = () => {
-                const result = data.map((index) => {
-                    return document.getElementById(index[0]).value;
-                });
-                Aggiorna(result)
-                
-                console.log(result);
+                const result =  {
+                    date: document.getElementById("Data").value,
+                    singole: document.getElementById("Singole").value,
+                    doppie: document.getElementById("Doppie").value,
+                    suite: document.getElementById("Suite").value
+                };
+                Booking(result);
+                callback(result);
             }
             },
         };
     };
 
+    const Booking = (result) => {
+        const key = getDateKey(result.date);
+        let available = defaultData;
+        
+        if (data[key]) {
+            available = data[key];
+        }
+    
+        if (result.singole > available[0] || result.doppie > available[1] || result.suite > available[2]) {
+            alert("Camere non disponibili per la prenotazione.");
+            return;
+        }
+
+        available[0] -= result.singole;
+        available[1] -= result.doppie;
+        available[2] -= result.suite;
+        data[key] = available;
+    
+        save().then(() => {
+            table.render();
+        });
+    };
+    
+
     const form = createForm(document.getElementById("form"));
     form.setlabels([["Data","date"], ["Singole","number"], ["Doppie","number"], ["Suite", "number"]]);
     form.submit = ((formData) => {
-        console.log("Dati inviati", formData);
+        console.log("Dati inviati:", formData);
     })
     form.render();
