@@ -3,6 +3,8 @@ let result_get=[];
 
 const SET = (chiave,value) => {
    console.log(value)
+   return new Promise((resolve,reject)=>{
+      try{
     fetch("https://ws.cipiaceinfo.it/cache/set", {
         headers: {
            'Content-Type': 'application/json',
@@ -15,11 +17,13 @@ const SET = (chiave,value) => {
         })
      }).then(r => r.json())
      .then(r => {
-        console.log(r.result);
+        resolve(r.result);
      })
-     .catch(r => {
-        console.log(r.result);
-     })
+     }
+     catch(error){
+      reject(error)
+     }
+   })
 }
 
 const GET = (chiave) => {
@@ -43,11 +47,20 @@ const GET = (chiave) => {
       }
    })   
 }
+
 const Aggiorna =(nuova_riga)=>{
    GET(chiave).then(result_get => {
       console.log(result_get);
       result_get.push(nuova_riga)
-      console.log(result_get)
-      SET(chiave,result_get)
+      SET(chiave,result_get).then(r=>{
+         console.log(r)
+         if (r==="Ok"){
+            GET(chiave).then((result_get) => {
+               console.log("genera")
+               let giorno = generaData(30,result_get)
+               table.crea(giorno);
+           })
+         }
+      })
    });
 }

@@ -12,46 +12,46 @@ const createForm = (parentElement) => {
                         </div>`;
             }).join("\n") + `<button type="button" class="btn btn-primary" id="submit">SUBMIT</button>`;
             document.getElementById("submit").onclick = () => {
-                const result =  {
-                    date: document.getElementById("Data").value,
-                    singole: document.getElementById("Singole").value,
-                    doppie: document.getElementById("Doppie").value,
-                    suite: document.getElementById("Suite").value
-                };
-                Aggiorna(result)
+                const result = {};
+                console.log(data)
+                data.forEach((index) => {
+                    const campo = index[0];  
+                    result[campo] = document.getElementById(campo).value;
+                });
                 Booking(result);        
-                callback(result);
             }
             },
         };
     };
 
     const Booking = (result) => {
-        const key = getDateKey(result.date);
-        let available = defaultData;
+        let available=[...lista_dizionario_giorni]
+        console.log(available)
+        let controllo = false
+        available.forEach((giorno)=>{
+            if(available["Data"]==result.Data){
+                for(chiave_dizionario in result){
+                    if (chiave_dizionario!="Data"){
+                        if((available[chiave_dizionario]-result[chiave_dizionario])<=0){
+                            controllo=true
+                        }
+                    }
+                } 
+            }
+        })
+        if(controllo){
+            alert("Non ci sono abbastanza stanze disponibili per la sua prenotazione")
+        }
+        else{
+            console.log("stai aggiornando")
+            Aggiorna(result)
+        }
         
-        if (data[key]) {
-            available = data[key];
-        }
-    
-        if (result.singole > available[0] || result.doppie > available[1] || result.suite > available[2]) {
-            alert("Camere non disponibili per la prenotazione.");
-            return;
-        }
-
-        available[0] -= result.singole;
-        available[1] -= result.doppie;
-        available[2] -= result.suite;
-        data[key] = available;
-    
-        save().then(() => {
-            table.render();
-        });
     };
     
 
     const form = createForm(document.getElementById("form"));
-    form.setlabels([["Data","date"], ["Singole","number"], ["Doppie","number"], ["Suite", "number"]]);
+    form.setlabels([["Data","date"], ["Singole","number"], ["Doppie","number"],["Triple","number"], ["Suite", "number"]]);
     form.submit = ((formData) => {
         console.log("Dati inviati:", formData);
     })
