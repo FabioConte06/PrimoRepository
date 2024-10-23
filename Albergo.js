@@ -12,11 +12,11 @@ const createForm = (parentElement) => {
                         </div>`;
             }).join("\n") + `<button type="button" class="btn btn-primary" id="submit">SUBMIT</button>`;
             document.getElementById("submit").onclick = () => {
-                console.log("ciao")
                 const result = data.map((index) => {
                     return document.getElementById(index[0]).value;
                 });
-                table.render(result)
+                Aggiorna(result)
+                
                 console.log(result);
             }
             },
