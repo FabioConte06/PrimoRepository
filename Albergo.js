@@ -18,7 +18,8 @@ const createForm = (parentElement) => {
                     doppie: document.getElementById("Doppie").value,
                     suite: document.getElementById("Suite").value
                 };
-                Booking(result);
+                Aggiorna(result)
+                Booking(result);        
                 callback(result);
             }
             },

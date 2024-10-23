@@ -1,9 +1,9 @@
-const chiave = "cfca9d05-1553-449d-ae62-172a341239b5";
+const chiave = "3819207b-2545-44f5-9bce-560b484b2f0f";
 let result_get=[];
 
 const SET = (chiave,value) => {
    console.log(value)
-    fetch("https://ws.progettimolinari.it/cache/set", {
+    fetch("https://ws.cipiaceinfo.it/cache/set", {
         headers: {
            'Content-Type': 'application/json',
            'key': chiave
@@ -25,7 +25,7 @@ const SET = (chiave,value) => {
 const GET = (chiave) => {
    return new Promise((resolve,reject)=>{
       try{
-      fetch("https://ws.progettimolinari.it/cache/get", {
+      fetch("https://ws.cipiaceinfo.it/cache/get", {
          headers: {
             'Content-Type': 'application/json',
             'key': chiave
