@@ -34,7 +34,28 @@ const generaData = (giorni) => {
     }
     return giorno;
 }
+
+const getDateKey = (date) => {
+    return date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+};
+
+const defaultData = ["0", "0", "0"];
  
 const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA", "SUITE"]);
 const giorno = generaData(30);
 table.render(giorno);
+
+GET().then((dataReceived) => {
+    data = dataReceived;
+    const dataMonth = {};
+    for (int = 0; i<30; i++) {
+       date.setDate(date.getDate() + 1); 
+       const key = getDateKey(date);
+       if (!data[key]) {
+              dataMonth[key] = defaultData;
+      } else {
+              dataMonth[key] = data[key];
+      }
+   }
+   table.render();
+ });
