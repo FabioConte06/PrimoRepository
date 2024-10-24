@@ -29,10 +29,10 @@ const createForm = (parentElement) => {
         console.log(available)
         let controllo = false
         available.forEach((giorno)=>{
-            if(available["Data"]==result.Data){
+            if(giorno["Data"]==result.Data){
                 for(chiave_dizionario in result){
                     if (chiave_dizionario!="Data"){
-                        if((available[chiave_dizionario]-result[chiave_dizionario])<=0){
+                        if((giorno[chiave_dizionario]-result[chiave_dizionario])<=0){
                             controllo=true
                         }
                     }
