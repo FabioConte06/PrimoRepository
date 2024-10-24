@@ -24,40 +24,36 @@ const generaData = (giorni,dati_get) => {
     const date = new Date();
     console.log(dati_get)
     for (let i = 0; i < giorni; i++){
-        let dizionario = {};
+        
         let formato = date.toLocaleDateString('en-CA', {
             year: 'numeric',
             month: '2-digit',
             day: '2-digit'
         });
         formato = formato.replaceAll("/","-")
-        dati_get.forEach((prenotazione)=>{
-            if(prenotazione.Data===formato){
-                console.log("ciao")
-                let base_stanze = {...defaultData}
-                let giornata = []
-                giornata.push(formato)
-                dizionario["Data"]=formato
-                for (chiave_dizionario in base_stanze){
-                    base_stanze[chiave_dizionario]-=prenotazione[chiave_dizionario]
-                    giornata.push(base_stanze[chiave_dizionario])
-                    dizionario[chiave_dizionario]=base_stanze[chiave_dizionario]
+        let base_stanze = { ...defaultData };  
+        let giornata = [];
+        let dizionario = {};
+
+        giornata.push(formato);
+        dizionario["Data"] = formato;
+        dati_get.forEach((prenotazione) => {
+            if (prenotazione.Data === formato) {
+                console.log("ciao");
+                for (let chiave_dizionario in base_stanze) {
+                    base_stanze[chiave_dizionario] -= prenotazione[chiave_dizionario];
                 }
-                lista_dizionario_giorni.push(dizionario)
-                giorno.push(giornata)
             }
-        })
-        let base_stanze = defaultData
-        let dizionario_2 = {}
-        let giornata = []
-        giornata.push(formato)
-        dizionario_2["Data"]=formato
-        for (chiave_dizionario in base_stanze){
-            giornata.push(base_stanze[chiave_dizionario])
-            dizionario_2[chiave_dizionario]=base_stanze[chiave_dizionario]
+        });
+
+        for (let chiave_dizionario in base_stanze) {
+            giornata.push(base_stanze[chiave_dizionario]);
+            dizionario[chiave_dizionario] = base_stanze[chiave_dizionario];
         }
-        giorno.push(giornata)
-        lista_dizionario_giorni.push(dizionario_2)
+
+        giorno.push(giornata);
+        lista_dizionario_giorni.push(dizionario);
+
         date.setDate(date.getDate() + 1);
     }
     return giorno;
