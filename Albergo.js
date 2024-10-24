@@ -32,7 +32,7 @@ const createForm = (parentElement) => {
             if(giorno["Data"]==result.Data){
                 for(chiave_dizionario in result){
                     if (chiave_dizionario!="Data"){
-                        if((giorno[chiave_dizionario]-result[chiave_dizionario])<=0){
+                        if((giorno[chiave_dizionario]-result[chiave_dizionario])<0){
                             controllo=true
                         }
                     }
