@@ -48,14 +48,14 @@ table.render(giorno);
 GET().then((dataReceived) => {
     data = dataReceived;
     const dataMonth = {};
-    for (let i = 0; i < 30; i++){
-        date.setDate(date.getDate() + 1);
-        const key = getDateKey(date);
-        if (!data[key]) {
-            dataMonth[key] = defaultData;
-        } else {
-            dataMonth[key] = data[key];
-        }
-    }
-    table.render();
-});
+    for (let i = 0; i<30; i++) {
+       date.setDate(date.getDate() + 1); 
+       const key = getDateKey(date);
+       if (!data[key]) {
+              dataMonth[key] = defaultData;
+      } else {
+              dataMonth[key] = data[key];
+      }
+   }
+   table.render();
+ });
